@@ -23,7 +23,7 @@ Make sure you have **Python 3.x** installed. No `pip install` needed!
 ### Installation & Usage
 1. Clone the repository:
    ```bash
-   git clone https://github.com
+   git clone https://github.com/damn-user/winter-console.git
    cd winter-console
    ```
 
