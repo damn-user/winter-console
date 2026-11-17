@@ -36,7 +36,10 @@ Make sure you have **Python 3.x** installed. No `pip install` needed!
 3. Press `Ctrl + C` to exit.
 
 ## 📸 Preview
-https://github.com/user-attachments/assets/b33ce83c-06c2-415a-8be1-b9a36f8afc2d
+
+https://github.com/user-attachments/assets/60e4a285-defa-43d6-818f-fd2197790343
+
+
 
 
 
