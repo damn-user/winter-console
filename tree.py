@@ -27,10 +27,13 @@ buff_cr = [
 
 step = 360
 
+win_width = 60
+win_height = 31
+
 
 def draw_tree(stp):
-    canvas = [[" " for x in range(60)] for y in range(31)]
-    z_buf = [[-999 for x in range(60)] for y in range(31)]
+    canvas = [[" " for x in range(win_width)] for y in range(win_height)]
+    z_buf = [[-999 for x in range(win_width)] for y in range(win_height)]
 
     height = 15
 
@@ -86,7 +89,7 @@ def draw_tree(stp):
             x = int(round(cen_w + r * math.cos(angle) * 2 * math.cos(stp)))
             y = int(round(cen_h - 2 + r * math.sin(angle)))
 
-            z = star_rad * math.sin(rot_angle) * math.cos(angle)
+            z = star_rad * math.sin(stp) * math.cos(angle)
 
             if z > -0.5:
                 canvas[y][x] = f"\033[38;5;226m*\033[0m"
