@@ -25,13 +25,15 @@ buff_cr = [
     (-99, "·", 233),
 ]
 
+win_width = 60
+win_height = 31
 
 step = 360
 
 
 def draw_tree(stp):
-    canvas = [[" " for x in range(60)] for y in range(31)]
-    z_buf = [[-999 for x in range(60)] for y in range(31)]
+    canvas = [[" " for x in range(win_width)] for y in range(win_height)]
+    z_buf = [[-999 for x in range(win_width)] for y in range(win_height)]
 
     height = 15
 
@@ -87,7 +89,7 @@ def draw_tree(stp):
             x = int(round(cen_w + r * math.cos(angle) * 2 * math.cos(stp)))
             y = int(round(cen_h - 2 + r * math.sin(angle)))
 
-            z = star_rad * math.sin(rot_angle) * math.cos(angle)
+            z = star_rad * math.sin(stp) * math.cos(angle)
 
             if z > -0.5:
                 canvas[y][x] = f"\033[38;5;226m*\033[0m"
@@ -98,22 +100,22 @@ def draw_tree(stp):
     return canvas
 
 
-snow_canvas = [[" " for x in range(60)] for y in range(31)]
+snow_canvas = [[" " for x in range(win_width)] for y in range(win_height)]
 
 
 def snow_generate():
-    r_pos = random.randint(0, 59)
+    r_pos = random.randint(0, win_width - 1)
     snow_canvas[0][r_pos] = "*"
 
 
 def snow_fall():
-    for y in range(31 - 1, -1, -1):
+    for y in range(win_height - 1, -1, -1):
         for x in range(len(snow_canvas[y])):
-            if snow_canvas[y][x] == "*" and y + 1 < 31:
+            if snow_canvas[y][x] == "*" and y + 1 < win_height:
                 snow_canvas[y + 1][x] = "*"
                 snow_canvas[y][x] = " "
 
-            elif snow_canvas[y][x] == "*" and y + 1 >= 31:
+            elif snow_canvas[y][x] == "*" and y + 1 >= win_height:
                 snow_canvas[y][x] = " "
 
 
@@ -121,9 +123,9 @@ def clip(s_c, c):
     snow_fall()
     snow_generate()
 
-    canvas = [[" " for x in range(60)] for y in range(31)]
-    for y in range(31):
-        for x in range(60):
+    canvas = [[" " for x in range(win_width)] for y in range(win_height)]
+    for y in range(win_height):
+        for x in range(win_width):
             canvas[y][x] = s_c[y][x]
             if c[y][x] != " ":
                 canvas[y][x] = c[y][x]
